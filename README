@@ -1,0 +1,21 @@
+A consideration that I made while designing this program was that this is a program for a stand-alone machine, and not a program that would run on an operating system. Something noteworthy from that consideration is that the main function only includes a call to coffeeMachineOff. My goal was to encapsulate the program into the functions, and have functions call the other functions as needed to control the program flow. Realistically, main runs as long as the coffee pot is plugged in, and I suppose the coffeeMachineOff function in its entirety could be in main. The program flow logically begins in off and waits for a button press while displaying the current time. The on button is first checked for a double press. If single press was checked first, double press would never be checked. When the on button is pressed twice, hours, and minutes are input from the user to set the current time, and will keep looping until the on button is pressed one more time to store the time. From machine status off, the program can flow to either sleep, or on. If the program button is pressed, hours and minutes are input for a preset time, and the machine remains in sleep mode until the off button is pressed, the on button is pressed, or the current time equals the preset time. Machine on can be reached from off or sleep by pressing the on button once, or from sleep when preset time equals current time. When on, the empty water sensor is checked, and the water is heated if it is not empty. Once the water is boiling, the pump is commanded on to mix coffee with water, filter and dispense. The machine then monitors the temperature of the coffee pot and maintains the pot at a predetermined temperature until the machine is turned off.
+It made sense to place routines for on, sleep, and off into functions as there are no other major functions that the machine performs, also they could be easily understood, and referenced through a machine status variable. Another function I considered was to take input for hours, and minutes, then format them to hh-mm and return that value. This function would eliminate duplicate code when setting time inputs hours, and minutes, and setting a preset time inputs hours and minutes. Several variables are implied by this design which account for everything in the solution of the problem statement. Variables implied are as follows:
+string coffeeMachineStatus
+int tempTimeHours
+int tempTimeMinutes
+int currentTimeHours
+int currentTimeMinutes
+int presetTimeHours
+int presetTimeMinutes
+double internalWaterTemp
+double coffeePotTemp
+bool waterEmpty
+bool waterPumpOn
+bool coffeePotHeaterOn
+bool waterHeaterOn
+bool waterBoiling
+bool onButtonPressed
+bool offButtonPressed
+bool programButtonPressed
+ 
+I often find making pseudocode and flowcharts challenging mainly because of the way that I approach problem solving. When tasked with a programming prompt in the past, I find it easier to think in terms of the code itself, and jump right in to coding which seems to flow more naturally for me. Recognizing that not everyone is like this, I understand the importance of a clear flowchart and pseudocode; to convey the concept to others in a way that is easier to understand and flexible to any programming language. I find pseudocode better to start with for a couple of reasons. Just recently I’m discovering that we are making larger programs which makes planning and organization crucial. Pseudocode and flowcharts will help serve as a guide to writing the actual program. Due to my aforementioned thought process, it makes sense to begin with pseudocode as it is closer to code than flowcharting is. Plus, the use of indentation and keywords help me keep track of my work as I am developing a solution, and make it clear where things like if statements, or while loops are. Once the pseudocode is complete, its logic can be followed and referenced while building the flowchart and both can be reviewed together for error checking and proper function.
