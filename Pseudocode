@@ -1,0 +1,72 @@
+3-2 Assignment – Designing your code: Pseudocode
+
+PROGRAM Electric Coffee Maker
+
+Function coffeeMachineOn
+  SET coffee machine status to on
+	WHILE coffee machine status is on
+		OUTPUT current time to the display
+  WHILE water is not empty
+		WHILE water is not boiling
+      Heat the water to boiling
+		ENDWHILE
+		Turn pump on to mix, filter, and dispense coffee
+  ENDWHILE
+  GET coffee pot temperature from the heating sensor
+  WHILE coffee pot temperature is lower than a predetermined fixed temperature
+    Warm coffee pot with heating element
+    IF off button is pressed
+	    call: coffeeMachineOff
+    ENDIF
+  ENDWHILE
+Endfunction
+
+Function coffeeMachineOff
+	SET coffee machine status to off
+  SET coffee pot heater to off
+  WHILE coffee machine status is off
+    OUTPUT current time to the display
+    IF on button is pressed twice
+      WHILE on button is not pressed
+        call: getTimeFromInput
+			ENDWHILE
+      SET the current time according to user’s input	
+    ENDIF
+    IF the on button is pressed once
+      call: coffeeMachineOn
+		ENDIF
+	ENDWHILE
+Endfunction
+
+Function coffeeMachineSleep	
+  SET coffee machine status to sleep
+  SET (call: getTimeFromInput) to preset time
+	WHILE machine status is sleep
+   		OUTPUT current time to the display
+      IF current time EQUALS preset time
+		    call: coffeeMachineOn
+		  ENDIF
+	ENDWHILE
+Endfunction
+
+
+
+
+Function getTimeFromInput
+  INPUT hour from the user
+  INPUT minutes from the user
+  Pass out: Formatted user hour and user minute (hh-mm)
+Endfunction
+
+Function main
+	call: coffeeMachineOff
+Endfunction
+
+ENDPROGRAM
+
+
+		
+
+	
+		
+
